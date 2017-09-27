@@ -14,6 +14,10 @@ class Calendar extends Component {
       return (
         <div>Fetching calendar...</div>
       );
+    } else if (calendarQuery && calendarQuery.error) {
+      return (
+        <div>Error</div>
+      );
     }
 
     const events = calendar.upcomingEvents.edges;
@@ -51,9 +55,7 @@ const CALENDAR_QUERY = gql`
             }
 
             images {
-              small
               medium
-              large
             }
           }
         }

@@ -3,6 +3,8 @@ import React from 'react';
 const Event = (props) => {
 
   const event = props.event.node;
+  const eventImage = event.images.medium;
+
   const eventStartDateArr = event.dates.start.split(' ');
   // const eventEndDateArr = event.dates.end.split(' ');
 
@@ -20,6 +22,7 @@ const Event = (props) => {
     console.log(event);
     return (
       <div>
+        <img src={eventImage} />
         <div>{eventStartWeekDay} | {eventStartDay} {eventStartMonth}</div>
         <div>{event.name}</div>
         <div>{eventStartTime}</div>
