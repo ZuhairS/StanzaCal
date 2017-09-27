@@ -3,7 +3,11 @@ import ReactDOM from 'react-dom';
 import './styles/index.css';
 import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
-import { ApolloProvider, createNetworkInterface, ApolloClient } from 'react-apollo';
+import {
+  ApolloProvider,
+  createNetworkInterface,
+  ApolloClient
+} from 'react-apollo';
 
 const networkInterface = createNetworkInterface({
   uri: 'https://www.stanza.dance/api/'
@@ -19,4 +23,5 @@ ReactDOM.render(
   </ApolloProvider>
   , document.getElementById('root')
 );
+
 registerServiceWorker();
