@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import { graphql, gql } from 'react-apollo';
 
 
-export default class Calender extends Component {
+class Calender extends Component {
 
   render() {
     const calender = this.props.calender;
@@ -12,6 +13,17 @@ export default class Calender extends Component {
         <div>{calender.subscriberCount}</div>
       </div>
     );
-    
+
   }
 }
+
+const CALENDER_QUERY = gql`
+  {
+    calendar(shortname: "nfl-49ers") {
+      name
+      subscriberCount
+    }
+  }
+`;
+
+export default graphql(CALENDER_QUERY, { name: 'calenderQuery' }) (Calender);
