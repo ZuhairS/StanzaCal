@@ -19,13 +19,12 @@ const Event = (props) => {
 
 
   if (event) {
-    console.log(event);
     return (
-      <div>
-        <img src={eventImage} />
-        <div>{eventStartWeekDay} | {eventStartDay} {eventStartMonth}</div>
-        <div>{event.name}</div>
-        <div>{eventStartTime}</div>
+      <div className='event-box'>
+        <img src={eventImage} alt="event background" />
+        <div className='event-date'>{eventStartWeekDay} | {eventStartDay} {eventStartMonth}</div>
+        <div className='event-name'>{event.name}</div>
+        <div className='event-time'>{eventStartTime}</div>
       </div>
     );
   }

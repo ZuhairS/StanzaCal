@@ -23,9 +23,9 @@ class Calendar extends Component {
     const events = calendar.upcomingEvents.edges;
 
     return (
-      <div>
-        <div>{calendar.name}</div>
-        <div>{calendar.subscriberCount}</div>
+      <div className="calender-header" >
+        <div id='calender-name'>{calendar.name}</div>
+        <div id='calender-subscriber-count'>{calendar.subscriberCount}</div>
         <div>
           {events.map((event, index) => {
             return <Event key={index} event={event} />;
