@@ -49,6 +49,12 @@ const CALENDAR_QUERY = gql`
               end
               allDay
             }
+
+            images {
+              small
+              medium
+              large
+            }
           }
         }
       }
