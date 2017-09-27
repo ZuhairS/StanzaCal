@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from '../logo.svg';
 import '../styles/App.css';
-import Calender from './Calender';
+import Calendar from './Calendar';
 
 class App extends Component {
   render() {
@@ -12,7 +12,7 @@ class App extends Component {
           <h1 className="App-title">StanzaCal</h1>
         </header>
 
-        <Calender />
+        <Calendar />
 
       </div>
     );

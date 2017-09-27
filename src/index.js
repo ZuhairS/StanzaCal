@@ -10,7 +10,7 @@ import {
 } from 'react-apollo';
 
 const networkInterface = createNetworkInterface({
-  uri: 'https://www.stanza.dance/api/'
+  uri: 'https://www.stanza.dance/api/graphql'
 });
 
 const client = new ApolloClient({
