@@ -23,8 +23,10 @@ const Event = (props) => {
       <div className='event-box'>
         <img src={eventImage} alt="event background" />
         <div className='event-date'>{eventStartWeekDay} | {eventStartDay} {eventStartMonth}</div>
-        <div className='event-name'>{event.name}</div>
-        <div className='event-time'>{eventStartTime}</div>
+        <div className='event-info'>
+          <div className='event-name'>{event.name}</div>
+          <div className='event-time'>{eventStartTime}</div>
+        </div>
       </div>
     );
   }

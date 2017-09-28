@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { graphql, gql } from 'react-apollo';
 import Event from './Event';
+import logo from '../logo.png';
 
 
 class Calendar extends Component {
@@ -23,10 +24,15 @@ class Calendar extends Component {
     const events = calendar.upcomingEvents.edges;
 
     return (
-      <div className="calender-header" >
-        <div id='calender-name'>{calendar.name}</div>
-        <div id='calender-subscriber-count'>{calendar.subscriberCount}</div>
-        <div>
+      <div className='App-header'>
+        <div className="calendar-header" >
+          <div className="App-logo">
+            <img src={logo}  alt="logo" />
+          </div>
+          <div id='calendar-name'>{calendar.name}</div>
+          <div id='calendar-subscriber-count'>{calendar.subscriberCount} Subscribers</div>
+        </div>
+        <div className='event-list'>
           {events.map((event, index) => {
             return <Event key={index} event={event} />;
           })}
