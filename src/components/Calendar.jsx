@@ -76,7 +76,7 @@ const CALENDAR_QUERY = gql`
       name
       subscriberCount
 
-      upcomingEvents: events(first: 10) {
+      upcomingEvents: events(first: 15) {
         edges {
           node {
             name
