@@ -1,13 +1,30 @@
 import React, { Component } from 'react';
-import { graphql, gql } from 'react-apollo';
+import { graphql, gql, withApollo } from 'react-apollo';
 import Event from './Event';
 import logo from '../logo.png';
 
 
 class Calendar extends Component {
 
-  render() {
+  // constructor() {
+  //   super();
+  //   this.state = {
+  //     calendar: {},
+  //     searchText: ''
+  //   };
+  // }
 
+  // async handleSearch() {
+  //   const { searchText } = this.state
+  //   const result = await this.props.client.query({
+  //     query: CALENDAR_QUERY,
+  //     variables: { searchText }
+  //   })
+  //   const { calendar } = result.data;
+  //   this.setState({ calendar });
+  // }
+
+  render() {
     const calendarQuery = this.props.calendarQuery;
     const calendar = calendarQuery.calendar;
 
@@ -22,7 +39,6 @@ class Calendar extends Component {
     }
 
     const events = calendar.upcomingEvents.edges;
-
     return (
       <div className='App-header'>
         <div className="calendar-header" >
@@ -31,6 +47,18 @@ class Calendar extends Component {
           </div>
           <div id='calendar-name'>{calendar.name}</div>
           <div id='calendar-subscriber-count'>{calendar.subscriberCount} Subscribers</div>
+          <div id='search-bar'>
+            <div>
+              Search
+              <input
+                type='text'
+                onChange={(e) => this.setState({ searchText: e.target.value })}
+              />
+            <button onClick={() => this.handleSearch()}>
+                OK
+              </button>
+            </div>
+          </div>
         </div>
         <div className='event-list'>
           {events.map((event, index) => {
@@ -39,7 +67,6 @@ class Calendar extends Component {
         </div>
       </div>
     );
-
   }
 }
 
@@ -49,7 +76,7 @@ const CALENDAR_QUERY = gql`
       name
       subscriberCount
 
-      upcomingEvents: events(first: 10, filterBy: {past: false}) {
+      upcomingEvents: events(first: 10) {
         edges {
           node {
             name
@@ -57,7 +84,6 @@ const CALENDAR_QUERY = gql`
             dates {
               start
               end
-              allDay
             }
 
             images {
@@ -67,8 +93,11 @@ const CALENDAR_QUERY = gql`
         }
       }
     }
-
   }
 `;
 
-export default graphql(CALENDAR_QUERY, { name: 'calendarQuery' })(Calendar);
+export default withApollo(
+  graphql(
+    CALENDAR_QUERY,
+    { name: 'calendarQuery' }
+  )(Calendar));
